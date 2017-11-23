@@ -151,7 +151,7 @@
 									</div>
 								</div>
 								<div class="row">
-									<div class="col-sm-12">
+									<div class="col-sm-8">
 										<div class="box">
 											<div class="box-header">
 												<h3>Builds</h3>
@@ -186,8 +186,47 @@
 											</div>
 										</div>
 									</div>
+                                    <div class="col-sm-4">
+                                        <div class="box">
+                                            <div class="box-header">
+                                                <h3>Top 5 Exception</h3>
+                                            </div>
+                                            <div class="box-body" ng-init="getExceptionAggregation()">
+                                            	<table class="table">
+                                                    <thead>
+														<tr>
+															<th>Name</th>
+															<th>Count</th>
+														</tr>
+                                                    </thead>
+													<#list exceptionList as exception>
+														<#if exception?counter <= 5>
+														<tr>
+															<td>
+                                                    			<div>${exception.name}</div>
+                                                            </td>
+															<td>
+                                                                <span class="label rounded deep-orange">${exception.totalStr}</span>
+															</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="2">
+																<div class="progress">
+																	<div class="progress-bar red-500" role="progressbar"
+																		 aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
+																		 style="width: ${exception.precent};color:white">
+																	</div>
+																</div>
+															</td>
+														</tr>
+														</#if>
+													</#list>
+                                            	</table>
+                                            </div>
+                                        </div>
+                                    </div>
 								</div>
-								
+
 								<div class="box">
 									<div class="box-header b-b">
 										<h3>Build Periodic Status (Showing last {{daysPast}} days)</h3>
@@ -196,13 +235,13 @@
 										<div class="dropdown">
 											<a data-toggle="dropdown" class="btn btn-xs rounded white dropdown-toggle">Today</a>
 											<div class="dropdown-menu pull-right">
-												<a class="dropdown-item" href="#" ng-click="getPeriodReportAggregation(1)">Last 24 hours</a>
-												<a class="dropdown-item" href="#" ng-click="getPeriodReportAggregation(7)">Last 7 days</a>
-												<a class="dropdown-item" href="#" ng-click="getPeriodReportAggregation(14)">Last 14 days</a>
-												<a class="dropdown-item" href="#" ng-click="getPeriodReportAggregation(21)">Last 21 days</a>
-												<a class="dropdown-item" href="#" ng-click="getPeriodReportAggregation(30)">Last 30 days</a>
+												<a class="dropdown-item last1" href="#" ng-click="getPeriodReportAggregation(1)">Last 24 hours</a>
+												<a class="dropdown-item last7" href="#" ng-click="getPeriodReportAggregation(7)">Last 7 days</a>
+												<a class="dropdown-item last14" href="#" ng-click="getPeriodReportAggregation(14)">Last 14 days</a>
+												<a class="dropdown-item last21" href="#" ng-click="getPeriodReportAggregation(21)">Last 21 days</a>
+												<a class="dropdown-item last30" href="#" ng-click="getPeriodReportAggregation(30)">Last 30 days</a>
 												<div class="dropdown-divider"></div>
-												<a class="dropdown-item">Today</a>
+												<a class="dropdown-item last0" href="#" ng-click="getPeriodReportAggregation(0)">Today</a>
 											</div>
 										</div>
 									</div>

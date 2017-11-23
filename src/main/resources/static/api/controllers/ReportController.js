@@ -118,8 +118,10 @@ angular.module('Klov')
                 console.log(response);
             });
         };
-        
+
         $scope.getPeriodReportAggregation = function(daysPast) {
+        	var text = $(".last" + daysPast).text();
+        	$(".dropdown-toggle").text(text);
     		$scope.daysPast = daysPast;
         	
         	var req = {

@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.aventstack.klov.domain.AggregationCount;
 
-public interface AuthorRepositoryCustom {  
+public interface AuthorRepositoryCustom {
     
     public List<AggregationCount> findDistinct();
     

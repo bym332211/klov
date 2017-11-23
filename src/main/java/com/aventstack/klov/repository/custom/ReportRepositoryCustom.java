@@ -11,7 +11,7 @@ import com.aventstack.klov.domain.Project;
 import com.aventstack.klov.domain.Report;
 import com.aventstack.klov.domain.WeeklyReportAggregation;
 
-public interface ReportRepositoryCustom {  
+public interface ReportRepositoryCustom {
 
     Long countByProjectAndStartTimeGreaterThan(Optional<Project> project, Date date);
 
@@ -20,7 +20,7 @@ public interface ReportRepositoryCustom {
     List<Report> findByCountOrderByDateTimeDesc(int count);
     
     List<Report> findIdByCountOrderByDateTimeDesc(Optional<Project> project, int count);
-    
+
     void remove(String id);
     
     Page<Report> findByProjectOrderByStartTimeDesc(Optional<Project> project, Pageable pageable);

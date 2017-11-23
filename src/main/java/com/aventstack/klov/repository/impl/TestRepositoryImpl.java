@@ -97,12 +97,12 @@ public class TestRepositoryImpl implements TestRepositoryCustom {
         
         return list;
     }
-    
+
     private void assignMedia(Log log) {
         List<Media> media = mediaRepo.findByLog(new ObjectId(log.getId()));
         assignMedia(log, media);
     }
-    
+
     private void assignMedia(IncludesMedia el, List<Media> media) {
         media.forEach(m -> {
             String base64String = storageService.loadBase64(m);
@@ -140,10 +140,10 @@ public class TestRepositoryImpl implements TestRepositoryCustom {
                 project("total").and("name").previousOperation()
         );
         AggregationResults<AggregationCount> groupResults = mongoTemplate.aggregate(pipeline, Test.class, AggregationCount.class);
-        
+
         return groupResults.getMappedResults();
     }
-    
+
     @Override
     public List<AggregationCount> findFailedTestLengthByProjectCategories(Optional<Project> project) {
         Criteria c = Criteria

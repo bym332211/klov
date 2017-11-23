@@ -34,13 +34,13 @@ public class CategoryRepositoryImpl implements CategoryRepositoryCustom {
 
     @Autowired
     private ReportRepository<Report, String> reportRepo;
-    
+
     @Override
     public List<AggregationCount> findDistinct(Optional<Project> project) {
         MatchOperation match = Aggregation.match(Criteria.where("name").ne(null));
         if (project.isPresent())
             match = Aggregation.match(Criteria.where("name").ne(null).and("project").is(new ObjectId(project.get().getId())));
-        
+
         GroupOperation group = Aggregation.group("name").count().as("total");
         ProjectionOperation projection = Aggregation.project("total").and("name").previousOperation();
         Aggregation pipeline = newAggregation(match, group, projection);
@@ -52,8 +52,8 @@ public class CategoryRepositoryImpl implements CategoryRepositoryCustom {
     @Override
     public List<AggregationCount> findTimeTakenForPastNReports(Optional<Project> project, int reportLength) {
         List<Report> reportList = reportRepo.findIdByCountOrderByDateTimeDesc(project, reportLength);
-        List<ObjectId> ids = reportList.stream().map(Report::getId).map(x -> new ObjectId(x)).collect(Collectors.toList()); 
-        
+        List<ObjectId> ids = reportList.stream().map(Report::getId).map(x -> new ObjectId(x)).collect(Collectors.toList());
+
         Criteria c = Criteria
                 .where("name").ne(null)
                 .and("timeTaken").ne(null)
@@ -63,15 +63,15 @@ public class CategoryRepositoryImpl implements CategoryRepositoryCustom {
         ProjectionOperation projection = Aggregation.project("total").and("name").previousOperation();
         Aggregation pipeline = newAggregation(match, group, projection);
         AggregationResults<AggregationCount> groupResults = mongoTemplate.aggregate(pipeline, Category.class, AggregationCount.class);
-        
+
         return groupResults.getMappedResults();
     }
 
     @Override
     public List<AggregationCount> findTestLengthForPastNReports(Optional<Project> project, int reportLength) {
         List<Report> reportList = reportRepo.findIdByCountOrderByDateTimeDesc(project, reportLength);
-        List<ObjectId> ids = reportList.stream().map(Report::getId).map(x -> new ObjectId(x)).collect(Collectors.toList()); 
-        
+        List<ObjectId> ids = reportList.stream().map(Report::getId).map(x -> new ObjectId(x)).collect(Collectors.toList());
+
         Criteria c = Criteria
                 .where("name").ne(null)
                 .and("testLength").ne(null)
@@ -81,10 +81,10 @@ public class CategoryRepositoryImpl implements CategoryRepositoryCustom {
         ProjectionOperation projection = Aggregation.project("total").and("name").previousOperation();
         Aggregation pipeline = newAggregation(match, group, projection);
         AggregationResults<AggregationCount> groupResults = mongoTemplate.aggregate(pipeline, Category.class, AggregationCount.class);
-        
+
         return groupResults.getMappedResults();
     }
-    
+
     @Override
     public List<Report> findReportsByCategoryName(Optional<Project> project, String name) {
         Query query = new Query(Criteria.where("categoryNameList").in(name).and("project").is(new ObjectId(project.get().getId())))
@@ -92,5 +92,5 @@ public class CategoryRepositoryImpl implements CategoryRepositoryCustom {
         List<Report> list = mongoTemplate.find(query, Report.class);
         return list;
     }
-    
+
 }

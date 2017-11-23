@@ -3,11 +3,14 @@ package com.aventstack.klov.controllers;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Random;
 
 import javax.servlet.http.HttpSession;
 
+import com.aventstack.klov.constant.Const;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,13 +28,15 @@ public class HomeController {
     @GetMapping("/")
     public String home(HttpSession session, Map<String, Object> model) {
         Optional<Project> project = Optional.ofNullable((Project) session.getAttribute("project"));
-        
+
         if (project.isPresent()) {
             return "redirect:/builds";
         } else {
             List<Project> projectList = projectRepo.findAll();
             model.put("projectList", projectList);
-            
+            Random random = new Random();
+            int backImg = random.nextInt(2);
+            model.put("lvback", "lv_back");
             return "redirect:/projects";
         }   
     }

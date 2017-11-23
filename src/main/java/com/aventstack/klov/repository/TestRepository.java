@@ -48,5 +48,5 @@ public interface TestRepository<T, ID extends Serializable> extends MongoReposit
     public List<Test> findByStartTimeGreaterThan(@Param("date") Date date);
     
     public List<Test> findByReportAndCategoryNameListIn(@Param("report") ObjectId report, @Param("categoryName") String categoryName);
-    
+
 }

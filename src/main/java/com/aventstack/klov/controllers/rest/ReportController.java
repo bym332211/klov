@@ -5,6 +5,9 @@ import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
 
+import com.aventstack.klov.domain.*;
+import com.aventstack.klov.domain.Exception;
+import com.aventstack.klov.repository.ExceptionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -32,6 +35,8 @@ public class ReportController implements ResourceProcessor<RepositorySearchesRes
 
     @Autowired
     private ReportRepository<Report, String> repo;
+    @Autowired
+    private ExceptionRepository<Exception, String>  exRepo;
     
     @Autowired
     private EntityLinks entityLinks;
@@ -72,7 +77,7 @@ public class ReportController implements ResourceProcessor<RepositorySearchesRes
         Optional<Project> project = Optional.ofNullable((Project) session.getAttribute("project"));
         return repo.findByPeriodicAggregation(project, daysPast);
     }
-    
+
     @Override
     public RepositorySearchesResource process(RepositorySearchesResource resource) {
         LinkBuilder lb = entityLinks.linkFor(Report.class);

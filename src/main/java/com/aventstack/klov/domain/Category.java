@@ -24,7 +24,7 @@ public class Category extends KlovDocument implements Serializable {
     private Integer testLength;
     private List<String> testNameList;
     private List<String> testIdList;
-    
+
     public String getId() {
         return id;
     }
@@ -87,7 +87,7 @@ public class Category extends KlovDocument implements Serializable {
     public void setTestLength(Integer testLength) {
         this.testLength = testLength;
     }
-    
+
     public List<String> getTestNameList() {
         return testNameList;
     }
@@ -101,5 +101,5 @@ public class Category extends KlovDocument implements Serializable {
     public void setTestIdList(List<String> testIdList) {
         this.testIdList = testIdList;
     }
-    
+
 }

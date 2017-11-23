@@ -44,15 +44,15 @@ public class ReportRepositoryImpl implements ReportRepositoryCustom {
     public List<Report> findByCountOrderByDateTimeDesc(int count) {
         return mongoTemplate.find(new Query().limit(count), Report.class);
     }
-    
+
     @Override
     public List<Report> findIdByCountOrderByDateTimeDesc(Optional<Project> project, int count) {
         Query q = new Query().limit(count).with(new Sort(Sort.Direction.DESC, "startTime"));
         q.fields().include("id");
-        
+
         if (project.isPresent())
             q.addCriteria(Criteria.where("project").is(new ObjectId(project.get().getId())));
-        
+
         return mongoTemplate.find(q, Report.class);
     }
 
@@ -160,7 +160,7 @@ public class ReportRepositoryImpl implements ReportRepositoryCustom {
         
         return dates;
     }
-    
+
     @Override
     public List<Report> findByCategoryNameList(Optional<Project> project, String name) {
         Query query = new Query(Criteria.where("categoryNameList").in(name));

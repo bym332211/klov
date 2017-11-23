@@ -1,6 +1,23 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="Klov">
     <#include 'partials/head.ftl'>
+    <style>
+        .navbar-brand > small {
+            color: #ce93d8 !important;
+            font-size: 80%;
+        }
+        .lv_logo{
+            background-image:url('../images/logo_black.svg');
+            background-repeat:no-repeat;
+            background-size: contain;
+            display:block;
+            height:45px;
+            width:45px;
+            text-align:center;
+            margin: 0 auto;
+            /*margin-bottom:25px*/
+        }
+    </style>
     <body>
         <div class="app" id="app" ng-controller="UserController">
             <div class="padding">
@@ -8,7 +25,7 @@
                     <div class="pull-center">
                         <!-- brand -->
                         <a href="/" class="navbar-brand">
-                        <span class="hidden-folded inline">klov</span>
+                        <span class="hidden-folded inline"><small class="dk _600 text-sm lv_logo"></small></span>
                         </a>
                         <!-- / brand -->
                     </div>

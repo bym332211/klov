@@ -3,6 +3,7 @@ package com.aventstack.klov.controllers;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Random;
 
 import javax.servlet.http.HttpSession;
 
@@ -23,7 +24,9 @@ public class ProjectsViewController {
     public String projects(HttpSession session, Map<String, Object> model) {
         Optional<Project> project = Optional.ofNullable((Project) session.getAttribute("project"));
         model.put("project", project);
-        
+        Random random = new Random();
+        int backImg = random.nextInt(3) + 1;
+        model.put("lvback", "lv_back" + backImg);
         List<Project> projectList = projectRepo.findAll();
         model.put("projectList", projectList);
         
