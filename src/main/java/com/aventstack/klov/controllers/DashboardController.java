@@ -40,8 +40,8 @@ public class DashboardController {
     @Autowired
     private TestRepository<Test, String> testRepo;
 
-    @Autowired
-    private ExceptionRepository<Exception, String>  exRepo;
+//    @Autowired
+//    private ExceptionRepository<Exception, String>  exRepo;
 
     @Autowired
     private ReportRepository<Report, String> reportRepo;
@@ -90,30 +90,30 @@ public class DashboardController {
         List<AggregationCount> categoryList = categoryRepo.findDistinct(project);
         model.put("categoryList", categoryList);
 
-        List<ExceptionAggregationCount> exceptionList = exRepo.findExceptionsGroupByName(project);
-        Long exceptionCnt = 0L;
-        for (ExceptionAggregationCount ec : exceptionList){
-            exceptionCnt += ec.getTotal();
-            ec.setCnt(exceptionCnt);
-        }
-        for (ExceptionAggregationCount ec : exceptionList){
-            float pre = 0;
-            String precent = "0";
-            if (exceptionCnt != 0) {
-                pre = (ec.getTotal()/(float) exceptionCnt) * 100;
-                DecimalFormat decimalFormat = new DecimalFormat(".00");
-                precent = decimalFormat.format(pre);
-            }
-            precent += "%";
-            ec.setPrecent(precent);
-            if (ec.getTotal() > 99999) {
-                ec.setTotalStr("99999+");
-            } else {
-                ec.setTotalStr(ec.getTotal().toString());
-            }
-        }
-        model.put("exceptionList", exceptionList);
-        model.put("exceptionCnt", exceptionCnt);
+//        List<ExceptionAggregationCount> exceptionList = exRepo.findExceptionsGroupByName(project);
+//        Long exceptionCnt = 0L;
+//        for (ExceptionAggregationCount ec : exceptionList){
+//            exceptionCnt += ec.getTotal();
+//            ec.setCnt(exceptionCnt);
+//        }
+//        for (ExceptionAggregationCount ec : exceptionList){
+//            float pre = 0;
+//            String precent = "0";
+//            if (exceptionCnt != 0) {
+//                pre = (ec.getTotal()/(float) exceptionCnt) * 100;
+//                DecimalFormat decimalFormat = new DecimalFormat(".00");
+//                precent = decimalFormat.format(pre);
+//            }
+//            precent += "%";
+//            ec.setPrecent(precent);
+//            if (ec.getTotal() > 99999) {
+//                ec.setTotalStr("99999+");
+//            } else {
+//                ec.setTotalStr(ec.getTotal().toString());
+//            }
+//        }
+//        model.put("exceptionList", exceptionList);
+//        model.put("exceptionCnt", exceptionCnt);
 
         model.put("projectList", projectRepo.findAll());
         model.put("Color", new Color());

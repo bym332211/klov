@@ -35,8 +35,7 @@ public class ReportController implements ResourceProcessor<RepositorySearchesRes
 
     @Autowired
     private ReportRepository<Report, String> repo;
-    @Autowired
-    private ExceptionRepository<Exception, String>  exRepo;
+
     
     @Autowired
     private EntityLinks entityLinks;
