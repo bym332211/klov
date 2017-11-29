@@ -4,6 +4,7 @@
 	
     <groupId>com.aventstack</groupId>
     <artifactId>klov</artifactId>
+    <packaging>pom</packaging>
     <version>0.0.1</version>
     <name>klov</name>
     <url>http://extentreports.com</url>
@@ -30,6 +31,11 @@
     </parent>
 	
     <dependencies>
+        <dependency>
+            <groupId>com.aventstack</groupId>
+            <artifactId>extentreports</artifactId>
+            <version>3.1.1</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-rest</artifactId>

@@ -5,9 +5,6 @@ import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
 
-import com.aventstack.klov.domain.*;
-import com.aventstack.klov.domain.Exception;
-import com.aventstack.klov.repository.ExceptionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
