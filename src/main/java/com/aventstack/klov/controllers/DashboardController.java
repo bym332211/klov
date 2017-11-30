@@ -43,8 +43,6 @@ public class DashboardController {
 
     @Autowired
     private ExceptionRepository<Exception, String>  exRepo;
-//    @Autowired
-//    private ExecptionRepositoryImpl exRepo;
 
     @Autowired
     private ReportRepository<Report, String> reportRepo;

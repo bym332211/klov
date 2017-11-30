@@ -19,4 +19,13 @@ public class SampleTest {
     public void case3() {
         Assert.assertEquals("a", "a");
     }
+
+    public void case4() throws Exception {
+        Exception e = new RuntimeException("case4 Exception");
+        throw e;
+    }
+
+    public void case5() {
+        Assert.assertEquals("a", "a");
+    }
 }

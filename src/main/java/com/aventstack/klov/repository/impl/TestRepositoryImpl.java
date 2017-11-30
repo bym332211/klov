@@ -1,10 +1,5 @@
 package com.aventstack.klov.repository.impl;
 
-import static org.springframework.data.mongodb.core.aggregation.Aggregation.group;
-import static org.springframework.data.mongodb.core.aggregation.Aggregation.match;
-import static org.springframework.data.mongodb.core.aggregation.Aggregation.newAggregation;
-import static org.springframework.data.mongodb.core.aggregation.Aggregation.project;
-
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -28,6 +23,8 @@ import com.aventstack.klov.domain.Test;
 import com.aventstack.klov.repository.MediaRepository;
 import com.aventstack.klov.repository.custom.TestRepositoryCustom;
 import com.aventstack.klov.storage.StorageService;
+
+import static org.springframework.data.mongodb.core.aggregation.Aggregation.*;
 
 @Repository
 public class TestRepositoryImpl implements TestRepositoryCustom {
@@ -137,7 +134,8 @@ public class TestRepositoryImpl implements TestRepositoryCustom {
         Aggregation pipeline = newAggregation(
                 match(c),
                 group("name").count().as("total"),
-                project("total").and("name").previousOperation()
+                project("total").and("name").previousOperation(),
+                sort(Sort.Direction.DESC, "total")
         );
         AggregationResults<AggregationCount> groupResults = mongoTemplate.aggregate(pipeline, Test.class, AggregationCount.class);
 
