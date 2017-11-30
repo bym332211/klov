@@ -4,7 +4,7 @@
 		font-size: 80%;
 	}
     .lv_logo{
-        background-image:url('images/logo.svg');
+        background-image:url('images/logo.jpg');
         background-repeat:no-repeat;
         background-size: contain;
         display:block;
@@ -25,7 +25,7 @@
     });
 </script>
 <a href="#" class="navbar-brand">
-	<!-- <div data-ui-include="'images/logo.svg'"></div>
+	<!-- <div data-ui-include="'images/logo.jpg'"></div>
 	<img src="images/logo.png" alt="." class="hide">
 	<span class="hidden-folded inline">klov</span> -->
 	<#--<small class="dk _600 text-sm">klov.</small>-->

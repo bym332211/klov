@@ -7,7 +7,7 @@
             font-size: 80%;
         }
         .lv_logo{
-            background-image:url('../images/logo_black.svg');
+            background-image:url('../images/logo_black.jpg');
             background-repeat:no-repeat;
             background-size: contain;
             display:block;

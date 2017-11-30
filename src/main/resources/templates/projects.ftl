@@ -55,7 +55,7 @@
             color: rgba(255, 255, 255, 0.87);
         }
         .lv_logo{
-            background-image:url('images/logo.svg');
+            background-image:url('images/logo_black.jpg');
             background-repeat:no-repeat;
             display:block;
             height:64px;
@@ -80,8 +80,8 @@
             <div class="indigo-800 h-v row-col">
                 <div  <#if lvback??> id="${lvback}"<#else> id="lv_back2"</#if> class="lv_back row-cell v-m text-center animated fadeIn">
                         <form id="form" action="/assignProjectById" method="post">
-                            <div class="lv_logo"></div>
-                            <div style="margin-bottom: 25px"><h1>test center</h1></div>
+                            <div class="lv_logo"><img style="width:64px;height:64px"src="images/logo.jpg"/></div>
+                            <div style="margin-bottom: 25px"><h1>Test Center</h1></div>
                             <div class="form-group">
                                 <select id="single" name="id" class="form-control select2 indigo-800" data-ui-jp="select2" data-ui-options="{theme: 'bootstrap'}">
                                     <option></option>
