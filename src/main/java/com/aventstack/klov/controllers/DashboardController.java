@@ -8,7 +8,7 @@ import javax.servlet.http.HttpSession;
 import com.aventstack.klov.domain.*;
 import com.aventstack.klov.domain.Exception;
 import com.aventstack.klov.repository.*;
-import com.aventstack.klov.repository.impl.ExecptionRepositoryImpl;
+//import com.aventstack.klov.repository.impl.ExecptionRepositoryImpl;
 import org.joda.time.DateTime;
 import org.ocpsoft.prettytime.PrettyTime;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,10 +41,10 @@ public class DashboardController {
     @Autowired
     private TestRepository<Test, String> testRepo;
 
-//    @Autowired
-//    private ExceptionRepository<Exception, String>  exRepo;
     @Autowired
-    private ExecptionRepositoryImpl exRepo;
+    private ExceptionRepository<Exception, String>  exRepo;
+//    @Autowired
+//    private ExecptionRepositoryImpl exRepo;
 
     @Autowired
     private ReportRepository<Report, String> reportRepo;

@@ -13,7 +13,7 @@ public class SampleTest {
     }
 
     public void case2() {
-        Assert.assertEquals("a", "a");
+        Assert.assertEquals("a", "");
     }
 
     public void case3() {
